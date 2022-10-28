@@ -41,10 +41,13 @@
    tg.MainButton.text = "Отправить"; //изменяем текст кнопки 
    tg.MainButton.setText("Отправить"); //изменяем текст кнопки иначе
    tg.MainButton.show()
-   
-
+   function sayHi() {
+      tg.expand();
+   }
+   setInterval(sayHi,10);
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
       tg.sendData("some string that we need to send"); 
+      tg.close();
       //при клике на основную кнопку отправляем данные в строковом виде
    });
 
@@ -69,9 +72,7 @@
       draw = true;
       context.beginPath();
       context.moveTo(mouse.x, mouse.y);
-      if (tg.isExpanded === false) {
-         tg.expand();
-      }
+     
    });
    canvas.addEventListener("mousemove", function(e){
  
@@ -83,9 +84,7 @@
  
         context.lineTo(mouse.x, mouse.y);
         context.stroke();
-        if (tg.isExpanded === false) {
-            tg.expand();
-        }
+        
     }
 });
 canvas.addEventListener("mouseup", function(e){
@@ -97,9 +96,7 @@ canvas.addEventListener("mouseup", function(e){
     context.stroke();
     context.closePath();
     draw = false;
-    if (tg.isExpanded === false) {
-       tg.expand();
-    }
+    
 });
 canvas.addEventListener("touchstart", function(e){
  
@@ -110,9 +107,7 @@ canvas.addEventListener("touchstart", function(e){
       draw = true;
       context.beginPath();
       context.moveTo(mouse.x, mouse.y);
-      if (tg.isExpanded === false) {
-         tg.expand();
-      }
+      
    });
    canvas.addEventListener("touchmove", function(e){
   
@@ -124,9 +119,7 @@ canvas.addEventListener("touchstart", function(e){
  
         context.lineTo(mouse.x, mouse.y);
         context.stroke();
-        if (tg.isExpanded === false) {
-         tg.expand();
-        }
+        
     }
 });
 canvas.addEventListener("touchend", function(e){
@@ -138,9 +131,7 @@ canvas.addEventListener("touchend", function(e){
     context.stroke();
     context.closePath();
     draw = false;
-    if (tg.isExpanded === false) {
-       tg.expand();
-    }
+    
 });
 
    //работает только в attachment menu
