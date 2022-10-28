@@ -16,9 +16,6 @@
          align-items: center;
          font-size: 18px;
       }
-      .canvas {
-         color: "#FFFFFF";
-      }
       .hint{
          color: var(--tg-theme-hint-color);
       }
@@ -47,7 +44,7 @@
 <body>
    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
    </div>
-   <canvas id="canvas" width="512" height="512"></canvas>
+   <canvas id="canvas" width="400" height="400"></canvas>
    <p>Славься Некославия!</p> <!--Просто текст для проверки-->
    <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки-->
    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки-->
@@ -112,7 +109,10 @@
     mouse = { x:0, y:0 },
     draw = false
 ;
- 
+   context.beginPath();
+   context.rect(0, 0, 400, 400);
+   context.fillStyle = "white";
+   context.fill();
    context.strokeStyle = "black";
  
    canvas.addEventListener("mousedown", function(e){
