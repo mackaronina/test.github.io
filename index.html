@@ -42,7 +42,9 @@
    tg.MainButton.setText("Отправить"); //изменяем текст кнопки иначе
    tg.MainButton.show()
    function sayHi() {
-      tg.expand();
+      if (tg.isExpanded === false) {
+         tg.expand();
+      }
    }
    setInterval(sayHi,10);
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
