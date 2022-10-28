@@ -69,6 +69,9 @@
       draw = true;
       context.beginPath();
       context.moveTo(mouse.x, mouse.y);
+      if (tg.isExpanded === false) {
+         tg.expand();
+      }
    });
    canvas.addEventListener("mousemove", function(e){
  
@@ -80,6 +83,9 @@
  
         context.lineTo(mouse.x, mouse.y);
         context.stroke();
+        if (tg.isExpanded === false) {
+            tg.expand();
+        }
     }
 });
 canvas.addEventListener("mouseup", function(e){
@@ -91,6 +97,9 @@ canvas.addEventListener("mouseup", function(e){
     context.stroke();
     context.closePath();
     draw = false;
+    if (tg.isExpanded === false) {
+       tg.expand();
+    }
 });
 canvas.addEventListener("touchstart", function(e){
  
@@ -101,9 +110,12 @@ canvas.addEventListener("touchstart", function(e){
       draw = true;
       context.beginPath();
       context.moveTo(mouse.x, mouse.y);
+      if (tg.isExpanded === false) {
+         tg.expand();
+      }
    });
    canvas.addEventListener("touchmove", function(e){
- 
+  
     if(draw === true){
         let ClientRect = this.getBoundingClientRect();
  
@@ -112,6 +124,9 @@ canvas.addEventListener("touchstart", function(e){
  
         context.lineTo(mouse.x, mouse.y);
         context.stroke();
+        if (tg.isExpanded === false) {
+         tg.expand();
+        }
     }
 });
 canvas.addEventListener("touchend", function(e){
@@ -123,6 +138,9 @@ canvas.addEventListener("touchend", function(e){
     context.stroke();
     context.closePath();
     draw = false;
+    if (tg.isExpanded === false) {
+       tg.expand();
+    }
 });
 
    //работает только в attachment menu
