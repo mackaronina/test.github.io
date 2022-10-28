@@ -95,8 +95,8 @@ canvas.addEventListener("mouseup", function(e){
 canvas.addEventListener("touchstart", function(e){
  
       let ClientRect = this.getBoundingClientRect();
-      mouse.x = e.clientX - ClientRect.left;
-      mouse.y = e.clientY - ClientRect.top;
+      mouse.x = e.changedTouches[0].clientX - ClientRect.left;
+      mouse.y = e.changedTouches[0].clientY - ClientRect.top;
  
       draw = true;
       context.beginPath();
@@ -107,8 +107,8 @@ canvas.addEventListener("touchstart", function(e){
     if(draw === true){
         let ClientRect = this.getBoundingClientRect();
  
-        mouse.x = e.clientX - ClientRect.left;
-        mouse.y = e.clientY - ClientRect.top;
+        mouse.x = e.changedTouches[0].clientX - ClientRect.left;
+        mouse.y = e.changedTouches[0].clientY - ClientRect.top;
  
         context.lineTo(mouse.x, mouse.y);
         context.stroke();
@@ -117,8 +117,8 @@ canvas.addEventListener("touchstart", function(e){
 canvas.addEventListener("touchend", function(e){
  
     let ClientRect = this.getBoundingClientRect();
-    mouse.x = e.clientX - ClientRect.left;
-    mouse.y = e.clientY - ClientRect.top;
+    mouse.x = e.changedTouches[0].clientX - ClientRect.left;
+    mouse.y = e.changedTouches[0].clientY - ClientRect.top;
     context.lineTo(mouse.x, mouse.y);
     context.stroke();
     context.closePath();
