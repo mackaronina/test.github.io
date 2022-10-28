@@ -47,12 +47,8 @@
       }
    }
    setInterval(sayHi,10);
-   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData("some string that we need to send"); 
-      tg.close();
-      //при клике на основную кнопку отправляем данные в строковом виде
-   });
-
+   
+    
 
    let canvas = document.getElementById("canvas"),
     context = canvas.getContext("2d"),
@@ -64,7 +60,13 @@
    context.fillStyle = "white";
    context.fill();
    context.strokeStyle = "black";
- 
+   Telegram.WebApp.onEvent('mainButtonClicked', function(){
+      tg.sendData("some string that we need to send"); 
+      canvas.toBlob(function(blob){
+	      var url=URL.createObjectURL(blob, blob.type);
+	      w=window.open(url);
+      },'image/png');
+   }
    canvas.addEventListener("mousedown", function(e){
  
       let ClientRect = this.getBoundingClientRect();
@@ -142,3 +144,7 @@ canvas.addEventListener("touchend", function(e){
    // usercard.appendChild(pic); //добавляем элемент в карточку 
 </script>
 </html>
+
+
+    
+
