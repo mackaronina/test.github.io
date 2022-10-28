@@ -34,7 +34,10 @@
       .button:not(:last-child){
          margin-bottom: 20px
       }
-
+      #can {
+         border-width: 4px;
+         border-color: black;
+      }
       #usercard{
          text-align: center;
       }
@@ -44,7 +47,9 @@
 <body>
    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
    </div>
+   <div id="can">
    <canvas id="canvas" width="400" height="400"></canvas>
+   </div>
    <p>Славься Некославия!</p> <!--Просто текст для проверки-->
    <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки-->
    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки-->
@@ -104,6 +109,7 @@
    let userid = document.createElement('p'); //создаем еще параграф 
    userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
    usercard.appendChild(userid); //добавляем
+   
    let canvas = document.getElementById("canvas"),
     context = canvas.getContext("2d"),
     mouse = { x:0, y:0 },
