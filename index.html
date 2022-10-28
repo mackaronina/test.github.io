@@ -34,20 +34,17 @@
       .button:not(:last-child){
          margin-bottom: 20px
       }
-      #can {
+      .div {
+         border-style: solid;
          border-width: 4px;
          border-color: black;
       }
-      #usercard{
-         text-align: center;
-      }
+   
    </style>
 </head>
 
 <body>
-   <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
-   </div>
-   <div id="can">
+   <div>
    <canvas id="canvas" width="400" height="400"></canvas>
    </div>
    <p>Славься Некославия!</p> <!--Просто текст для проверки-->
@@ -97,19 +94,6 @@
    });
 
 
-   let usercard = document.getElementById("usercard"); //получаем блок usercard 
-
-   let profName = document.createElement('p'); //создаем параграф
-   profName.innerText = `${tg.initDataUnsafe.user.first_name}
-   ${tg.initDataUnsafe.user.last_name}
-   ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
-   //выдем имя, "фамилию", через тире username и код языка
-   usercard.appendChild(profName); //добавляем 
-
-   let userid = document.createElement('p'); //создаем еще параграф 
-   userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
-   usercard.appendChild(userid); //добавляем
-   
    let canvas = document.getElementById("canvas"),
     context = canvas.getContext("2d"),
     mouse = { x:0, y:0 },
