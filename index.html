@@ -47,7 +47,7 @@
 <body>
    <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
    </div>
-   <canvas id="MyCanvas" width="512" height="512"></canvas>
+   <canvas id="canvas" width="512" height="512"></canvas>
    <p>Славься Некославия!</p> <!--Просто текст для проверки-->
    <a class="link" href="https://mihailgok.ru">Link</a> <!--Просто ссылка для проверки-->
    <p class="hint">Some little hint</p> <!--Просто текст-подсказка для проверки-->
@@ -65,7 +65,7 @@
    tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
    tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
    tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
-
+   
    let btn = document.getElementById("btn"); //получаем кнопку скрыть/показать 
 
    btn.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
@@ -107,7 +107,46 @@
    let userid = document.createElement('p'); //создаем еще параграф 
    userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
    usercard.appendChild(userid); //добавляем
-
+   let canvas = document.getElementById("canvas"),
+    context = canvas.getContext("2d"),
+    mouse = { x:0, y:0 },
+    draw = false
+;
+ 
+   context.strokeStyle = "black";
+ 
+   canvas.addEventListener("mousedown", function(e){
+ 
+      let ClientRect = this.getBoundingClientRect();
+      mouse.x = e.clientX - ClientRect.left;
+      mouse.y = e.clientY - ClientRect.top;
+ 
+      draw = true;
+      context.beginPath();
+      context.moveTo(mouse.x, mouse.y);
+   });
+   canvas.addEventListener("mousemove", function(e){
+ 
+    if(draw === true){
+        let ClientRect = this.getBoundingClientRect();
+ 
+        mouse.x = e.clientX - ClientRect.left;
+        mouse.y = e.clientY - ClientRect.top;
+ 
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+    }
+});
+canvas.addEventListener("mouseup", function(e){
+ 
+    let ClientRect = this.getBoundingClientRect();
+    mouse.x = e.clientX - ClientRect.left;
+    mouse.y = e.clientY - ClientRect.top;
+    context.lineTo(mouse.x, mouse.y);
+    context.stroke();
+    context.closePath();
+    draw = false;
+});
 
    //работает только в attachment menu
    // let pic = document.createElement('img'); //создаем img
